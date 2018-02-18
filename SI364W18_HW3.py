@@ -58,8 +58,8 @@ class Tweet(db.Model):
     text = db.Column(db.String(280))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    # def __repr__(self):
-    #     return '<User %r>' % self.username
+    def __repr__(self):
+        return '<%r (ID:%r)>' % (self.text,self.user_id)
 # - User
 ## -- id (Integer, Primary Key)
 ## -- username (String, up to 64 chars, Unique=True)
@@ -75,8 +75,8 @@ class User(db.Model):
     display_name = db.Column(db.String(164))
     tweets = db.relationship('Tweet',backref='User')
 
-    # def __repr__(self):
-    #     return '<User %r>' % self.username
+    def __repr__(self):
+        return '<%r | ID:%r>' % (self.username,self.id)
 
 ########################
 ##### Set up Forms #####
